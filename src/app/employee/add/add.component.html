@@ -1,0 +1,74 @@
+<div class="container">
+  <div mat-dialog-content>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <label>First Name: </label> <br /><br />
+        <input
+          matInput
+          placeholder="First name"
+          formControlName="first_name"
+          class="person-input"
+        />
+        <mat-hint align="end"
+          >{{ form.controls.first_name.value?.length || 0 }}/10</mat-hint
+        >
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <label>Last Name: </label> <br /><br />
+        <input
+          matInput
+          placeholder="Last name"
+          formControlName="last_name"
+          class="person-input"
+        />
+        <mat-hint align="end"
+          >{{ form.controls.last_name.value?.length || 0 }}/10</mat-hint
+        >
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <label>Email: </label> <br /><br />
+        <input
+          matInput
+          formControlName="email"
+          placeholder="pat@example.com"
+          required
+        />
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field>
+        <label>Birth of Date: </label> <br /><br />
+        <input matInput [matDatepicker]="date" formControlName="date" />
+        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+        <mat-datepicker #date></mat-datepicker>
+      </mat-form-field>
+
+      <br />
+
+      <mat-radio-group formControlName="group" color="primary">
+        <label>Group: </label> <br /><br />
+        <mat-radio-button value="dev">Development</mat-radio-button>
+        <mat-radio-button value="acc">Accounting</mat-radio-button>
+      </mat-radio-group>
+    </form>
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="save(form)"
+      class="btnSave"
+      [disabled]="!form.valid"
+    >
+      <span>Save</span>
+    </button>
+  </div>
+</div>
